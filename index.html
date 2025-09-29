@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>IsiZulu Corpus Prototype</title>
+</head>
+<body>
+    <header>
+        <h1>IsiZulu Corpus</h1>
+    </header>
+    <nav>
+        <a href="#" class="nav-link active" data-page="home">Home</a>
+        <a href="#" class="nav-link" data-page="frequency">Frequency</a>
+        <a href="#" class="nav-link" data-page="context">Context</a>
+        <a href="#" class="nav-link" data-page="upload">Import Text</a>
+        <!-- Hidden link for document page (will be shown programmatically) -->
+        <a href="#" class="nav-link hidden" data-page="document" id="document-nav-link">Document</a>
+    </nav>
+
+    <main>
+        <!-- Home Page (Search) -->
+        <div id="home-page" class="page">
+            <div class="search-container">
+                <h2>Search for a word in the language corpus</h2>
+                <p>(Search for a word in the corpus)</p>
+                
+                <form id="search-form">
+                    <input type="text" id="search-input" placeholder="Search..." required>
+                    <button type="submit" id="search-btn">Search</button>
+                </form>
+                
+                <div class="corpus-info">
+                    <h3>About This Corpus</h3>
+                    <p>The corpus contains:</p>
+                    <ul id="corpus-stats">
+                        <li>Loading statistics...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frequency Page -->
+        <div id="frequency-page" class="page hidden">
+            <div class="results-container">
+                <h2>Word Frequency: <span id="current-keyword" class="keyword"></span></h2>
+                
+                <div class="frequency-result">
+                    <p>This word appears <strong id="frequency-count">0</strong> times in the entire corpus.</p>
+                </div>
+                
+                <div class="top-words">
+                    <h3>Most frequent words in the corpus:</h3>
+                    <ol id="top-words-list"></ol>
+                </div>
+                
+                <button id="view-context-btn" class="btn">
+                    View how this word is used
+                </button>
+            </div>
+        </div>
+
+        <!-- Context Page -->
+        <div id="context-page" class="page hidden">
+            <div class="context-container">
+                <h2>Usage of the word: <span id="context-keyword" class="keyword"></span></h2>
+                
+                <div id="context-examples" class="context-examples">
+                    <p>Loading context examples...</p>
+                </div>
+                
+                <button id="back-to-frequency" class="btn">Back to Frequency</button>
+            </div>
+        </div>
+
+        <!-- Document View Page -->
+        <div id="document-page" class="page hidden">
+            <div class="document-container">
+                <button id="back-to-context" class="btn">Back to Context</button>
+                <h2 id="document-title"></h2>
+                <div class="document-meta">
+                    <span id="document-genre"></span> • <span id="document-source"></span>
+                </div>
+                <div id="document-content" class="document-content">
+                    <p>Loading document...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Page -->
+        <div id="upload-page" class="page hidden">
+            <div class="upload-container">
+                <h2>Upload a New Document</h2>
+                <p>(Upload a new document to the corpus)</p>
+                
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="document-title">Title:</label>
+                        <input type="text" id="document-title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="document-genre">Genre:</label>
+                        <select id="document-genre" required>
+                            <option value="">Choose a genre</option>
+                            <option value="news">News</option>
+                            <option value="literature">Literature</option>
+                            <option value="conversation">Conversation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="document-source">Source:</label>
+                        <input type="text" id="document-source" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="document-file">File:</label>
+                        <input type="file" id="document-file" accept=".txt,.doc,.docx,.pdf" required>
+                        <small>File can be .txt, .doc, .docx, or .pdf</small>
+                    </div>
+                    
+                    <button type="submit" id="upload-btn">Upload</button>
+                </form>
+                
+                <div id="upload-status" class="status-message"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>IsiZulu Corpus © 2025</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
